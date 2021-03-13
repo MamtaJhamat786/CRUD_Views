@@ -1,0 +1,28 @@
+{% extends "basic_app/basic_app_base.html" %}
+{% block body_block %}
+
+<div class="jumbotron">
+<h1> Welcome to the school Details page</h1>
+<h2> School Details:</h2>
+<!-- Here in this line school_detail is coming from views {schooldetailview and contect_object_name} -->
+<p>Name : {{school_detail.name}}</p>   
+<p>Principal : {{school_detail.principal}}</p>
+<p>Location : {{school_detail.location}}</p>
+<h3>Students: </h3>
+<!-- students is coming from trelated_name in model -->
+{% for student in school_detail.students.all%}
+    <p>{{studnet.name}} who is {{student.age}} years old</p>
+
+{% endfor %}
+
+</div>
+<div class="container">
+    <p><a class= "btn btn-warning" href="{% url 'basic_app:update' pk=school_detail.pk %}">Update</a></p>
+
+</div>
+<div class="container">
+    <p><a class= "btn btn-warning" href="{% url 'basic_app:delete' pk=school_detail.pk %}">Delete</a></p>
+
+</div>
+
+{% endblock %}
